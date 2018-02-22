@@ -1,10 +1,9 @@
 package com.example.hello;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class ObjectController {
@@ -28,9 +27,14 @@ public class ObjectController {
 
     }
 
-    @GetMapping("/dollarStore")
-    public boolean dollarStore(@RequestParam HashMap inventory){
-        return inventory.containsKey("price");
+    @PostMapping("/dollarStore")
+    public boolean dollarStore(@RequestBody HashMap<String, Item> inventory){
+        for(Item i: inventory.values()){
+            if(i.charged > 1){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

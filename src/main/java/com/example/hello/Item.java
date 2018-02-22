@@ -7,9 +7,11 @@ public class Item {
     public double moneyGiven;
     public double charged;
 
-    public Item(String productName, double paid, double charging){
-        this.name = productName;
-        this.moneyGiven = paid;
-        this.charged = charging;
+    public Item() {}
+
+    public Item(String name, double moneyGiven, double charged){
+        this.name = name;
+        this.moneyGiven = moneyGiven;
+        this.charged = charged;
     }
 }
